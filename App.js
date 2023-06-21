@@ -1,38 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
 
-import Button from './components/Button';
-import ImageViewer from './components/ImageViewer';
-
-const PlaceholderImage = require('./assets/images/background-image.png');
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <ImageViewer placeholderImageSource={PlaceholderImage}/>
-      </View>
-      <View style={styles.footerContainer}>
-        <Button theme="primary" label="Choose a photo" />
-        <Button label="Use this photo" />
-      </View>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#25292e',
+    backgroundColor: '#fff',
     alignItems: 'center',
-  },
-  imageContainer: {
-    flex: 1,
-    paddingTop: 58,
-  },
-  footerContainer: {
-    flex: 1 / 3,
-    alignItems: 'center'
+    justifyContent: 'center',
   },
 });
