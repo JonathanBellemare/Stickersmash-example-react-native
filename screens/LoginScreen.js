@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native'
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { auth } from '../firebase'
 
@@ -45,6 +45,7 @@ const LoginScreen = () => {
       style={styles.container}
       behavior="padding"
     >
+    <Image style={styles.logo} source={require('../assets/images/extraball.png')} />
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
@@ -84,7 +85,7 @@ const LoginScreen = () => {
           onPress={handleSignUp}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.buttonOutlineText}>Register</Text>
+          <Text style={styles.buttonOutlineText}>Sign Up</Text>
         </TouchableOpacity>
         </View>
     </KeyboardAvoidingView>
@@ -96,7 +97,7 @@ export default LoginScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'top',
     alignItems: 'center',
   },
   inputContainer: {
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   button: {
-    backgroundColor: '#0782F9',
+    backgroundColor: '#F8D255',
     width: '100%',
     padding: 15,
     borderRadius: 10,
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
   buttonOutline: {
     backgroundColor: 'white',
     marginTop: 5,
-    borderColor: '#0782F9',
+    borderColor: '#F8D255',
     borderWidth: 2,
   },
   buttonOutlineFacebook: {
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonOutlineText: {
-    color: '#0782F9',
+    color: '#F8D255',
     fontWeight: '700',
     fontSize: 16,
   },
@@ -156,6 +157,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingRight: 10,
-    size: 20
+  },
+  logo: {
+    width: 250,
+    height: 300,
+    resizeMode: 'contain'
   }
 })
