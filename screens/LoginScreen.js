@@ -41,10 +41,7 @@ const LoginScreen = () => {
   }
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior="padding"
-    >
+    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled={true}>
     <Image style={styles.logo} source={require('../assets/images/extraball.png')} />
       <View style={styles.inputContainer}>
         <TextInput
@@ -60,6 +57,7 @@ const LoginScreen = () => {
           style={styles.input}
           secureTextEntry
         />
+        <Text style={styles.forgotPasswordText}>Forgot password? <Text style={styles.forgotPasswordPress}onPress={() => {alert('Change password pressed')}}>Click here</Text></Text>
       </View>
 
       <View style={styles.buttonContainer}>
@@ -162,5 +160,16 @@ const styles = StyleSheet.create({
     width: 250,
     height: 300,
     resizeMode: 'contain'
+  },
+  forgotPasswordText: {
+    color: 'black',
+    //fontWeight: '700',
+    fontSize: 16,
+    paddingLeft: 10
+  },
+  forgotPasswordPress: {
+    color: 'blue',
+    fontWeight: '700',
+    fontSize: 16,
   }
 })
