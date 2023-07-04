@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { auth } from '../firebase'
 
@@ -13,7 +14,7 @@ const LoginScreen = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        navigation.replace("Home")
+        navigation.replace("ExtraballApp")
       }
     })
 
@@ -41,7 +42,7 @@ const LoginScreen = () => {
   }
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled={true}>
+    <KeyboardAwareScrollView contentContainerStyle={styles.container}>
     <Image style={styles.logo} source={require('../assets/images/extraball.png')} />
       <View style={styles.inputContainer}>
         <TextInput
@@ -86,7 +87,7 @@ const LoginScreen = () => {
           <Text style={styles.buttonOutlineText}>Sign Up</Text>
         </TouchableOpacity>
         </View>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   )
 }
 
